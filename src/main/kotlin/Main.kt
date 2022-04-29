@@ -1,13 +1,16 @@
 import controller.API
 import model.Player
 import mu.KotlinLogging
+import persistence.JSONSerializer
 import utils.Scanner.Scanner.readNextInt
 import utils.Scanner.Scanner.readNextLine
+import java.io.File
 import java.time.LocalDate
 import java.util.*
 
+// private val api = API(XMLSerializer(File("players.xml")))
+private val api = API(JSONSerializer(File("players.json")))
 private val logger = KotlinLogging.logger {}
-private val api = API()
 val scanner = Scanner(System.`in`)
 
 fun main(args: Array<String>) {
@@ -88,12 +91,21 @@ fun searchByID() {
         println(searchResult)
     }
 }
+
 fun save() {
-    logger.info { "save() function invoked" }
+    try {
+        api.store()
+    } catch (e: Exception) {
+        System.err.println("Error writing to file: $e")
+    }
 }
 
 fun load() {
-    logger.info { "load() function invoked" }
+    try {
+        api.load()
+    } catch (e: Exception) {
+        System.err.println("Error reading from file: $e")
+    }
 }
 
 fun updatePlayer() {
