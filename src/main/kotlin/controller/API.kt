@@ -52,4 +52,13 @@ class API {
             players.removeAt(indexToDelete)
         } else null
     }
+
+    fun formatListString(playersToFormat : List<Player>) :String =
+        playersToFormat
+            .joinToString (separator = "\n") { player ->
+                players.indexOf(player).toString() + ": " + player.toString() }
+
+    fun searchByIndex (searchString : Int) =
+        formatListString(
+            players.filter { Player -> Player.playerID==(searchString) })
 }

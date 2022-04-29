@@ -80,9 +80,14 @@ fun numOfPlayers() {
 }
 
 fun searchByID() {
-    logger.info { "searchByID() function invoked" }
+    val searchID = readNextInt("Enter the playerID: ")
+    val searchResult = api.searchByIndex(searchID)
+    if (searchResult.isEmpty()) {
+        println("No players found")
+    } else {
+        println(searchResult)
+    }
 }
-
 fun save() {
     logger.info { "save() function invoked" }
 }
