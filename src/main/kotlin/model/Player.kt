@@ -1,8 +1,9 @@
 package model
 
 data class Player(
-    var Name:String = "",
-    var ageGroup:Int = 18,
-    var DOB: String = "") {
+    var playerID: Int,
+    var Name:String,
+    var ageGroup:Int,
+    var DOB: String) {
 
 }

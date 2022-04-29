@@ -1,7 +1,13 @@
+import controller.API
+import model.Player
 import mu.KotlinLogging
+import utils.Scanner.Scanner.readNextInt
+import utils.Scanner.Scanner.readNextLine
+import java.time.LocalDate
 import java.util.*
 
 private val logger = KotlinLogging.logger {}
+private val api = API()
 val scanner = Scanner(System.`in`)
 
 fun main(args: Array<String>) {
@@ -46,15 +52,31 @@ fun runMenu() {
 }
 
 fun addPlayer(){
-    logger.info { "addPlayer() function invoked" }
+    //logger.info { "addNote() function invoked" }
+    //val playerID = readNextInt("Enter a ID number: ")
+    //println(Validations.validator)
+    //val DOB = getDateInput("Enter DOB")
+    //val DOB = readNextLine("Enter DOB: ")
+    var playerID = readNextInt("Enter ID for player: ")
+    var Name = readNextLine("Enter full name for player: ")
+    var ageGroup = readNextInt("Enter age for player: ")
+    var DOB = readNextLine("Enter DOB for player: ")
+    val isAdded = api.add(Player(playerID, Name, ageGroup, DOB))
+
+    if (isAdded) {
+        println("Added Successfully")
+        api.listPlayers()
+    } else {
+        println("Add Failed")
+    }
 }
 
 fun listPlayers() {
-    logger.info { "listPlayers() function invoked" }
+    println(api.listPlayers())
 }
 
 fun numOfPlayers() {
-    logger.info { "numberOfPlayers() function invoked" }
+    println(api.numberOfPlayers())
 }
 
 fun searchByID() {
@@ -70,11 +92,42 @@ fun load() {
 }
 
 fun updatePlayer() {
-    logger.info { "updatePlayers() function invoked" }
+    //logger.info { "updateNotes() function invoked" }
+    listPlayers()
+    if (api.numberOfPlayers() > 0) {
+        //only ask the user to choose the note if notes exist
+        val indexToUpdate = readNextInt("Enter a ID number:")
+        if (api.isValidIndex(indexToUpdate)) {
+            val playerID = readNextInt("Enter ID for player: ")
+            val Name = readNextLine("Enter full name for player: ")
+            val ageGroup = readNextInt("Enter age: ")
+            val DOB = readNextLine("Enter DOB: ")
+
+            //pass the index of the note and the new note details to NoteAPI for updating and check for success.
+            if (api.updateNote(indexToUpdate, Player(playerID, Name, ageGroup, DOB))){
+                println("Update Successful")
+            } else {
+                println("Update Failed")
+            }
+        } else {
+            println("There are no players for this index number")
+        }
+    }
 }
 
 fun deletePlayer() {
-    logger.info { "deletePlayer() function invoked" }
+    listPlayers()
+    if (api.numberOfPlayers() > 0) {
+        //only ask the user to choose the note to delete if notes exist
+        val indexToDelete = readNextInt("Enter the index of the note to delete: ")
+        //pass the index of the note to NoteAPI for deleting and check for success.
+        val noteToDelete = api.deleteNote(indexToDelete)
+        if (noteToDelete != null) {
+            println("Delete Successful! Deleted note: ${noteToDelete.playerID}")
+        } else {
+            println("Delete NOT Successful")
+        }
+    }
 }
 
 fun exit() {
