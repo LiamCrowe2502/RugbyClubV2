@@ -63,4 +63,21 @@ class APITest {
         assertEquals(1, emptyNotes!!.numberOfPlayers())
         assertEquals(newNote, emptyNotes!!.findNote(emptyNotes!!.numberOfPlayers() - 1))
     }
+
+    @Test
+    fun `listAllNotes returns No Notes Stored message when ArrayList is empty`() {
+        assertEquals(0, emptyNotes!!.numberOfPlayers())
+        assertTrue(emptyNotes!!.listPlayers().lowercase().contains("no players"))
+    }
+
+    @Test
+    fun `listAllNotes returns Notes when ArrayList has notes stored`() {
+        assertEquals(5, populatedNotes!!.numberOfPlayers())
+        val notesString = populatedNotes!!.listPlayers().lowercase()
+        assertTrue(notesString.contains("learning kotlin"))
+        assertTrue(notesString.contains("code app"))
+        assertTrue(notesString.contains("test app"))
+        assertTrue(notesString.contains("swim"))
+        assertTrue(notesString.contains("summer holiday"))
+    }
 }
