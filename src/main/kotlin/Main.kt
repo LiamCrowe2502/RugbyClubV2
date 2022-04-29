@@ -2,6 +2,8 @@ import controller.API
 import model.Player
 import mu.KotlinLogging
 import persistence.JSONSerializer
+import utils.CategoryUtility
+import utils.CategoryUtility.categories
 import utils.Scanner.readNextInt
 import utils.Scanner.getDateInput
 import utils.Scanner.readNextLine
@@ -62,6 +64,10 @@ fun addPlayer() {
     //val DOB = getDateInput("Enter DOB")
     //val DOB = readNextLine("Enter DOB: ")
     var Name = readNextLine("Enter full name for player: ")
+    var category = ""
+    do {
+        category = readNextLine("Enter category name for player ($categories): ")
+    } while( !CategoryUtility.isValidCategory(category))
     var DOB = getDateInput("Enter DOB: ")
     var dateAsString = DOB.toString()
     if (DOB == LocalDate.now()) run {
@@ -72,7 +78,7 @@ fun addPlayer() {
     do {
         ageGroup = readNextInt("Enter age group: ")
     } while (ageGroup !in 6..39)
-    val isAdded = api.add(Player(Name = Name, DOB = dateAsString, ageGroup = ageGroup))
+    val isAdded = api.add(Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))
 
     if (isAdded) {
         println("Added Successfully")
@@ -124,6 +130,10 @@ fun updatePlayer() {
         val indexToUpdate = readNextInt("Enter a Index number:")
         if (api.isValidIndex(indexToUpdate)) {
             val Name = readNextLine("Enter full name for player: ")
+            var category = ""
+            do {
+                category = readNextLine("Enter category name for player ($categories): ")
+            } while( !CategoryUtility.isValidCategory(category))
             var DOB = getDateInput("Enter DOB: ")
             var dateAsString = DOB.toString()
             if (DOB == LocalDate.now()) run {
@@ -134,7 +144,7 @@ fun updatePlayer() {
             do {
                 ageGroup = readNextInt("Enter age group: ")
             } while (ageGroup !in 6..39)
-            if (api.updateNote(indexToUpdate, Player(Name = Name, DOB = dateAsString, ageGroup = ageGroup))){
+            if (api.updateNote(indexToUpdate, Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))){
                 println("Update Successful")
             } else {
                 println("Update Failed")

@@ -36,6 +36,7 @@ class API(serializerType: Serializer){
         //if the note exists, use the note details passed as parameters to update the found note in the ArrayList.
         if ((foundPlayer != null) && (note != null)) {
             foundPlayer.Name = note.Name
+            foundPlayer.Category = note.Category
             foundPlayer.DOB = note.DOB
             foundPlayer.ageGroup = note.ageGroup
             return true

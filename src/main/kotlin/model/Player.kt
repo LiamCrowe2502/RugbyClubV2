@@ -16,6 +16,7 @@ private fun Date.dateToString(format: String): String {
 
 class Player(
     var Name:String = "",
+    var Category: String = "",
     var ageGroup:Int = 18,
     //var DOB: String = ""
     var timestamp: Date = Date(),
@@ -29,7 +30,7 @@ class Player(
 
     val playerID = count.incrementAndGet()
     override fun toString(): String {
-        return "Player(id=$playerID, name = '$Name', age = '$ageGroup' dob = '$DOB')"
+        return "Player(id=$playerID, name = '$Name', category = '$Category', age = '$ageGroup' dob = '$DOB')"
     }
 
 }
