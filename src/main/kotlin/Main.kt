@@ -2,8 +2,9 @@ import controller.API
 import model.Player
 import mu.KotlinLogging
 import persistence.JSONSerializer
-import utils.Scanner.Scanner.readNextInt
-import utils.Scanner.Scanner.readNextLine
+import utils.Scanner.readNextInt
+import utils.Scanner.getDateInput
+import utils.Scanner.readNextLine
 import java.io.File
 import java.time.LocalDate
 import java.util.*
@@ -61,10 +62,17 @@ fun addPlayer() {
     //val DOB = getDateInput("Enter DOB")
     //val DOB = readNextLine("Enter DOB: ")
     var Name = readNextLine("Enter full name for player: ")
-    var DOB = readNextLine("Enter DOB for player: ")
-    var ageGroup = readNextInt("Enter age for player: ")
-
-    val isAdded = api.add(Player(Name = Name, DOB = DOB, ageGroup = ageGroup))
+    var DOB = getDateInput("Enter DOB: ")
+    var dateAsString = DOB.toString()
+    if (DOB == LocalDate.now()) run {
+        dateAsString = "0000-00-00"
+        println("The date was invalid.")
+    }
+    var ageGroup = 0
+    do {
+        ageGroup = readNextInt("Enter age group: ")
+    } while (ageGroup !in 6..39)
+    val isAdded = api.add(Player(Name = Name, DOB = dateAsString, ageGroup = ageGroup))
 
     if (isAdded) {
         println("Added Successfully")
@@ -116,11 +124,17 @@ fun updatePlayer() {
         val indexToUpdate = readNextInt("Enter a Index number:")
         if (api.isValidIndex(indexToUpdate)) {
             val Name = readNextLine("Enter full name for player: ")
-            val ageGroup = readNextInt("Enter age: ")
-            val DOB = readNextLine("Enter DOB: ")
-
-            //pass the index of the note and the new note details to NoteAPI for updating and check for success.
-            if (api.updateNote(indexToUpdate, Player(Name, DOB, ageGroup))){
+            var DOB = getDateInput("Enter DOB: ")
+            var dateAsString = DOB.toString()
+            if (DOB == LocalDate.now()) run {
+                dateAsString = "0000-00-00"
+                println("The date was invalid.")
+            }
+            var ageGroup = 0
+            do {
+                ageGroup = readNextInt("Enter age group: ")
+            } while (ageGroup !in 6..39)
+            if (api.updateNote(indexToUpdate, Player(Name = Name, DOB = dateAsString, ageGroup = ageGroup))){
                 println("Update Successful")
             } else {
                 println("Update Failed")
