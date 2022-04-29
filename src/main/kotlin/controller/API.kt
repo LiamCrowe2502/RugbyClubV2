@@ -23,18 +23,18 @@ class API {
     }
 
     fun isValidIndex(index: Int) :Boolean{
-        return isValidListIndex(index, players);
+        return isValidListIndex(index, players)
     }
 
     fun updateNote(indexToUpdate: Int, note: Player?): Boolean {
         //find the note object by the index number
-        val foundNote = findNote(indexToUpdate)
+        val foundPlayer = findNote(indexToUpdate)
 
         //if the note exists, use the note details passed as parameters to update the found note in the ArrayList.
-        if ((foundNote != null) && (note != null)) {
-            foundNote.Name = note.Name
-            foundNote.DOB = note.DOB
-            foundNote.ageGroup = note.ageGroup
+        if ((foundPlayer != null) && (note != null)) {
+            foundPlayer.Name = note.Name
+            foundPlayer.DOB = note.DOB
+            foundPlayer.ageGroup = note.ageGroup
             return true
         }
         //if the note was not found, return false, indicating that the update was not successful
