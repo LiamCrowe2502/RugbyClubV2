@@ -51,17 +51,17 @@ fun runMenu() {
     } while (true)
 }
 
-fun addPlayer(){
+fun addPlayer() {
     //logger.info { "addNote() function invoked" }
     //val playerID = readNextInt("Enter a ID number: ")
     //println(Validations.validator)
     //val DOB = getDateInput("Enter DOB")
     //val DOB = readNextLine("Enter DOB: ")
-    var playerID = readNextInt("Enter ID for player: ")
     var Name = readNextLine("Enter full name for player: ")
-    var ageGroup = readNextInt("Enter age for player: ")
     var DOB = readNextLine("Enter DOB for player: ")
-    val isAdded = api.add(Player(playerID, Name, ageGroup, DOB))
+    var ageGroup = readNextInt("Enter age for player: ")
+
+    val isAdded = api.add(Player(Name = Name, DOB = DOB, ageGroup = ageGroup))
 
     if (isAdded) {
         println("Added Successfully")
@@ -96,15 +96,14 @@ fun updatePlayer() {
     listPlayers()
     if (api.numberOfPlayers() > 0) {
         //only ask the user to choose the note if notes exist
-        val indexToUpdate = readNextInt("Enter a ID number:")
+        val indexToUpdate = readNextInt("Enter a Index number:")
         if (api.isValidIndex(indexToUpdate)) {
-            val playerID = readNextInt("Enter ID for player: ")
             val Name = readNextLine("Enter full name for player: ")
             val ageGroup = readNextInt("Enter age: ")
             val DOB = readNextLine("Enter DOB: ")
 
             //pass the index of the note and the new note details to NoteAPI for updating and check for success.
-            if (api.updateNote(indexToUpdate, Player(playerID, Name, ageGroup, DOB))){
+            if (api.updateNote(indexToUpdate, Player(Name, DOB, ageGroup))){
                 println("Update Successful")
             } else {
                 println("Update Failed")
