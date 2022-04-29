@@ -1,8 +1,11 @@
 package controller
 
 import model.Player
+import persistence.Serializer
 
-class API {
+class API(serializerType: Serializer){
+
+    private var serializer: Serializer = serializerType
     private var players = ArrayList<Player>()
 
     fun add(player: Player): Boolean {
@@ -61,4 +64,14 @@ class API {
     fun searchByIndex (searchString : Int) =
         formatListString(
             players.filter { Player -> Player.playerID==(searchString) })
+
+    @Throws(Exception::class)
+    fun load() {
+        players = serializer.read() as ArrayList<Player>
+    }
+
+    @Throws(Exception::class)
+    fun store() {
+        serializer.write(players)
+    }
 }
