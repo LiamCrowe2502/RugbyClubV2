@@ -1,0 +1,71 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:////PointingToDeclaration/-rugby-club-v2/[root]/index.html
+$dokka.location://addPlayer/#/PointingToDeclaration/-rugby-club-v2/[root]/add-player.html
+$dokka.location://deletePlayer/#/PointingToDeclaration/-rugby-club-v2/[root]/delete-player.html
+$dokka.location://exit/#/PointingToDeclaration/-rugby-club-v2/[root]/exit.html
+$dokka.location://listPlayers/#/PointingToDeclaration/-rugby-club-v2/[root]/list-players.html
+$dokka.location://load/#/PointingToDeclaration/-rugby-club-v2/[root]/load.html
+$dokka.location://main/#kotlin.Array[kotlin.String]/PointingToDeclaration/-rugby-club-v2/[root]/main.html
+$dokka.location://mainMenu/#/PointingToDeclaration/-rugby-club-v2/[root]/main-menu.html
+$dokka.location://numOfPlayers/#/PointingToDeclaration/-rugby-club-v2/[root]/num-of-players.html
+$dokka.location://runMenu/#/PointingToDeclaration/-rugby-club-v2/[root]/run-menu.html
+$dokka.location://save/#/PointingToDeclaration/-rugby-club-v2/[root]/save.html
+$dokka.location://scanner/#/PointingToDeclaration/-rugby-club-v2/[root]/scanner.html
+$dokka.location://searchByID/#/PointingToDeclaration/-rugby-club-v2/[root]/search-by-i-d.html
+$dokka.location://updatePlayer/#/PointingToDeclaration/-rugby-club-v2/[root]/update-player.html
+$dokka.location:controller////PointingToDeclaration/-rugby-club-v2/controller/index.html
+$dokka.location:controller/API///PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/index.html
+$dokka.location:controller/API/API/#persistence.Serializer/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/-a-p-i.html
+$dokka.location:controller/API/add/#model.Player/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/add.html
+$dokka.location:controller/API/deleteNote/#kotlin.Int/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/delete-note.html
+$dokka.location:controller/API/findNote/#kotlin.Int/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/find-note.html
+$dokka.location:controller/API/formatListString/#kotlin.collections.List[model.Player]/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/format-list-string.html
+$dokka.location:controller/API/isValidIndex/#kotlin.Int/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/is-valid-index.html
+$dokka.location:controller/API/isValidListIndex/#kotlin.Int#kotlin.collections.List[kotlin.Any]/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/is-valid-list-index.html
+$dokka.location:controller/API/listPlayers/#/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/list-players.html
+$dokka.location:controller/API/load/#/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/load.html
+$dokka.location:controller/API/numberOfPlayers/#/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/number-of-players.html
+$dokka.location:controller/API/searchByIndex/#kotlin.Int/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/search-by-index.html
+$dokka.location:controller/API/store/#/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/store.html
+$dokka.location:controller/API/updateNote/#kotlin.Int#model.Player?/PointingToDeclaration/-rugby-club-v2/controller/-a-p-i/update-note.html
+$dokka.location:model////PointingToDeclaration/-rugby-club-v2/model/index.html
+$dokka.location:model/Player.Companion///PointingToDeclaration/-rugby-club-v2/model/-player/-companion/index.html
+$dokka.location:model/Player///PointingToDeclaration/-rugby-club-v2/model/-player/index.html
+$dokka.location:model/Player/Category/#/PointingToDeclaration/-rugby-club-v2/model/-player/-category.html
+$dokka.location:model/Player/DOB/#/PointingToDeclaration/-rugby-club-v2/model/-player/-d-o-b.html
+$dokka.location:model/Player/Name/#/PointingToDeclaration/-rugby-club-v2/model/-player/-name.html
+$dokka.location:model/Player/Player/#kotlin.String#kotlin.String#kotlin.Int#java.util.Date#kotlin.String/PointingToDeclaration/-rugby-club-v2/model/-player/-player.html
+$dokka.location:model/Player/ageGroup/#/PointingToDeclaration/-rugby-club-v2/model/-player/age-group.html
+$dokka.location:model/Player/playerID/#/PointingToDeclaration/-rugby-club-v2/model/-player/player-i-d.html
+$dokka.location:model/Player/timestamp/#/PointingToDeclaration/-rugby-club-v2/model/-player/timestamp.html
+$dokka.location:model/Player/toString/#/PointingToDeclaration/-rugby-club-v2/model/-player/to-string.html
+$dokka.location:persistance////PointingToDeclaration/-rugby-club-v2/persistance/index.html
+$dokka.location:persistance/XMLSerializer///PointingToDeclaration/-rugby-club-v2/persistance/-x-m-l-serializer/index.html
+$dokka.location:persistance/XMLSerializer/XMLSerializer/#java.io.File/PointingToDeclaration/-rugby-club-v2/persistance/-x-m-l-serializer/-x-m-l-serializer.html
+$dokka.location:persistance/XMLSerializer/read/#/PointingToDeclaration/-rugby-club-v2/persistance/-x-m-l-serializer/read.html
+$dokka.location:persistance/XMLSerializer/write/#kotlin.Any?/PointingToDeclaration/-rugby-club-v2/persistance/-x-m-l-serializer/write.html
+$dokka.location:persistence////PointingToDeclaration/-rugby-club-v2/persistence/index.html
+$dokka.location:persistence/JSONSerializer///PointingToDeclaration/-rugby-club-v2/persistence/-j-s-o-n-serializer/index.html
+$dokka.location:persistence/JSONSerializer/JSONSerializer/#java.io.File/PointingToDeclaration/-rugby-club-v2/persistence/-j-s-o-n-serializer/-j-s-o-n-serializer.html
+$dokka.location:persistence/JSONSerializer/read/#/PointingToDeclaration/-rugby-club-v2/persistence/-j-s-o-n-serializer/read.html
+$dokka.location:persistence/JSONSerializer/write/#kotlin.Any?/PointingToDeclaration/-rugby-club-v2/persistence/-j-s-o-n-serializer/write.html
+$dokka.location:persistence/Serializer///PointingToDeclaration/-rugby-club-v2/persistence/-serializer/index.html
+$dokka.location:persistence/Serializer/read/#/PointingToDeclaration/-rugby-club-v2/persistence/-serializer/read.html
+$dokka.location:persistence/Serializer/write/#kotlin.Any?/PointingToDeclaration/-rugby-club-v2/persistence/-serializer/write.html
+$dokka.location:utils////PointingToDeclaration/-rugby-club-v2/utils/index.html
+$dokka.location:utils/CategoryUtility///PointingToDeclaration/-rugby-club-v2/utils/-category-utility/index.html
+$dokka.location:utils/CategoryUtility/categories/#/PointingToDeclaration/-rugby-club-v2/utils/-category-utility/categories.html
+$dokka.location:utils/CategoryUtility/isValidCategory/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-category-utility/is-valid-category.html
+$dokka.location:utils/Scanner///PointingToDeclaration/-rugby-club-v2/utils/-scanner/index.html
+$dokka.location:utils/Scanner/getDateInput/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-scanner/get-date-input.html
+$dokka.location:utils/Scanner/readNextChar/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-scanner/read-next-char.html
+$dokka.location:utils/Scanner/readNextDouble/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-scanner/read-next-double.html
+$dokka.location:utils/Scanner/readNextInt/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-scanner/read-next-int.html
+$dokka.location:utils/Scanner/readNextLine/#kotlin.String?/PointingToDeclaration/-rugby-club-v2/utils/-scanner/read-next-line.html
+controller
+model
+persistance
+persistence
+utils
+
