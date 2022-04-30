@@ -4,5 +4,3 @@
 - Language - Kotlin
 
 
-
-![Alt text](Screenshot 2022-03-24 20426.png)
