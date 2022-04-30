@@ -21,11 +21,11 @@ class APITest {
 
     @BeforeEach
     fun setup(){
-        learnKotlin = Player("Learning Kotlin", 5, "College")
-        summerHoliday = Player("Summer Holiday to France", 1, "Holiday")
-        codeApp =  Player("Code App", 4, "Work")
-        testApp =  Player("Test App", 4, "Work")
-        swim = Player("Swim - Pool", 3, "Hobby")
+        learnKotlin = Player("Learning Kotlin","Forwrds", 20, "2002-01-25")
+        summerHoliday = Player("Summer Holiday to France", "Forwrds", 20, "2002-01-25")
+        codeApp =  Player("Code App", "Forwrds", 20, "2002-01-25")
+        testApp =  Player("Test App", "Forwrds", 20, "2002-01-25")
+        swim = Player("Swim - Pool", "Forwrds", 20, "2002-01-25")
 
         //adding 5 Note to the notes api
         populatedNotes!!.add(learnKotlin!!)
@@ -48,7 +48,7 @@ class APITest {
 
     @Test
     fun `adding a Note to a populated list adds to ArrayList`(){
-        val newNote = Player("Study Lambdas", 1, "College")
+        val newNote = Player("Study Lambdas","Forwrds", 20, "2002-01-25")
         assertEquals(5, populatedNotes!!.numberOfPlayers())
         assertTrue(populatedNotes!!.add(newNote))
         assertEquals(6, populatedNotes!!.numberOfPlayers())
@@ -57,7 +57,7 @@ class APITest {
 
     @Test
     fun `adding a Note to an empty list adds to ArrayList`(){
-        val newNote = Player("Study Lambdas", 1, "College")
+        val newNote = Player("Study Lambdas", "Forwrds", 20, "2002-01-25")
         assertEquals(0, emptyNotes!!.numberOfPlayers())
         assertTrue(emptyNotes!!.add(newNote))
         assertEquals(1, emptyNotes!!.numberOfPlayers())
