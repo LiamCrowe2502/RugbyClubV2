@@ -10,13 +10,14 @@ import utils.Scanner.readNextLine
 import java.io.File
 import java.time.LocalDate
 import java.util.*
+import kotlin.system.exitProcess
 
 // private val api = API(XMLSerializer(File("players.xml")))
 private val api = API(JSONSerializer(File("players.json")))
 private val logger = KotlinLogging.logger {}
 val scanner = Scanner(System.`in`)
 
-fun main(args: Array<String>) {
+fun main() {
     runMenu()
 }
 
@@ -24,7 +25,7 @@ fun mainMenu(): Int {
     print(
         """ 
          > ----------------------------------
-         > |        Rugby Club APP         |
+         > |        Rugby Club APP          |
          > ----------------------------------
          > |   1) Add a player              |
          > |   2) List all players          |
@@ -43,8 +44,7 @@ fun mainMenu(): Int {
 
 fun runMenu() {
     do {
-        val option = mainMenu()
-        when (option) {
+        when (val option: Int = mainMenu()) {
             1 -> addPlayer()
             2 -> listPlayers()
             3 -> numOfPlayers()
@@ -54,7 +54,7 @@ fun runMenu() {
             7 -> updatePlayer()
             8 -> deletePlayer()
             0 -> exit()
-            else -> System.out.println("Invalid option entered: $option")
+            else -> println("Invalid option entered: $option")
         }
     } while (true)
 }
@@ -65,22 +65,22 @@ fun addPlayer() {
     // println(Validations.validator)
     // val DOB = getDateInput("Enter DOB")
     // val DOB = readNextLine("Enter DOB: ")
-    var Name = readNextLine("Enter full name for player: ")
-    var category = ""
+    val name = readNextLine("Enter full name for player: ")
+    var category: String
     do {
         category = readNextLine("Enter category name for player ($categories): ")
     } while (!CategoryUtility.isValidCategory(category))
-    var DOB = getDateInput("Enter DOB: ")
-    var dateAsString = DOB.toString()
-    if (DOB == LocalDate.now()) run {
+    val dob = getDateInput("Enter DOB: ")
+    var dateAsString = dob.toString()
+    if (dob == LocalDate.now()) run {
         dateAsString = "0000-00-00"
         println("The date was invalid.")
     }
-    var ageGroup = 0
+    var ageGroup: Int
     do {
         ageGroup = readNextInt("Enter age group: ")
     } while (ageGroup !in 6..39)
-    val isAdded = api.add(Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))
+    val isAdded = api.add(Player(Name = name, Category = category, DOB = dateAsString, ageGroup = ageGroup))
 
     if (isAdded) {
         println("Added Successfully")
@@ -131,22 +131,22 @@ fun updatePlayer() {
         // only ask the user to choose the note if notes exist
         val indexToUpdate = readNextInt("Enter a Index number:")
         if (api.isValidIndex(indexToUpdate)) {
-            val Name = readNextLine("Enter full name for player: ")
-            var category = ""
+            val name = readNextLine("Enter full name for player: ")
+            var category: String
             do {
                 category = readNextLine("Enter category name for player ($categories): ")
             } while (!CategoryUtility.isValidCategory(category))
-            var DOB = getDateInput("Enter DOB: ")
-            var dateAsString = DOB.toString()
-            if (DOB == LocalDate.now()) run {
+            val dob = getDateInput("Enter DOB: ")
+            var dateAsString = dob.toString()
+            if (dob == LocalDate.now()) run {
                 dateAsString = "0000-00-00"
                 println("The date was invalid.")
             }
-            var ageGroup = 0
+            var ageGroup: Int
             do {
                 ageGroup = readNextInt("Enter age group: ")
             } while (ageGroup !in 6..39)
-            if (api.updateNote(indexToUpdate, Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))) {
+            if (api.updateNote(indexToUpdate, Player(Name = name, Category = category, DOB = dateAsString, ageGroup = ageGroup))) {
                 println("Update Successful")
             } else {
                 println("Update Failed")
@@ -174,5 +174,5 @@ fun deletePlayer() {
 
 fun exit() {
     logger.info { "exit function invoked" }
-    System.exit(0)
+    exitProcess(0)
 }

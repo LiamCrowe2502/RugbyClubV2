@@ -45,7 +45,7 @@ class API(serializerType: Serializer) {
      *
      * @param prompt  The information printed to the console for the user to read
      */
-    fun isValidListIndex(index: Int, list: List<Any>): Boolean {
+    private fun isValidListIndex(index: Int, list: List<Any>): Boolean {
         return (index >= 0 && index < list.size)
     }
 
@@ -110,7 +110,7 @@ class API(serializerType: Serializer) {
      * @param prompt  The information printed to the console for the user to read
      * @return The the size of the arraylist.
      */
-    fun formatListString(playersToFormat: List<Player>): String =
+    private fun formatListString(playersToFormat: List<Player>): String =
         playersToFormat
             .joinToString(separator = "\n") { player ->
                 players.indexOf(player).toString() + ": " + player.toString()
