@@ -4,8 +4,8 @@ import mu.KotlinLogging
 import persistence.JSONSerializer
 import utils.CategoryUtility
 import utils.CategoryUtility.categories
-import utils.Scanner.readNextInt
 import utils.Scanner.getDateInput
+import utils.Scanner.readNextInt
 import utils.Scanner.readNextLine
 import java.io.File
 import java.time.LocalDate
@@ -20,8 +20,9 @@ fun main(args: Array<String>) {
     runMenu()
 }
 
-fun mainMenu() : Int {
-    print(""" 
+fun mainMenu(): Int {
+    print(
+        """ 
          > ----------------------------------
          > |        Rugby Club APP         |
          > ----------------------------------
@@ -35,7 +36,8 @@ fun mainMenu() : Int {
          > |   8) Delete a player           |
          > |   0) Exit                      |
          > ----------------------------------
-         > ==>> """.trimMargin(">"))
+         > ==>> """.trimMargin(">")
+    )
     return scanner.nextInt()
 }
 
@@ -43,31 +45,31 @@ fun runMenu() {
     do {
         val option = mainMenu()
         when (option) {
-            1  -> addPlayer()
-            2  -> listPlayers()
-            3  -> numOfPlayers()
-            4  -> searchByID()
-            5  -> save()
-            6  -> load()
-            7  -> updatePlayer()
-            8  -> deletePlayer()
-            0  -> exit()
-            else -> System.out.println("Invalid option entered: ${option}")
+            1 -> addPlayer()
+            2 -> listPlayers()
+            3 -> numOfPlayers()
+            4 -> searchByID()
+            5 -> save()
+            6 -> load()
+            7 -> updatePlayer()
+            8 -> deletePlayer()
+            0 -> exit()
+            else -> System.out.println("Invalid option entered: $option")
         }
     } while (true)
 }
 
 fun addPlayer() {
-    //logger.info { "addNote() function invoked" }
-    //val playerID = readNextInt("Enter a ID number: ")
-    //println(Validations.validator)
-    //val DOB = getDateInput("Enter DOB")
-    //val DOB = readNextLine("Enter DOB: ")
+    // logger.info { "addNote() function invoked" }
+    // val playerID = readNextInt("Enter a ID number: ")
+    // println(Validations.validator)
+    // val DOB = getDateInput("Enter DOB")
+    // val DOB = readNextLine("Enter DOB: ")
     var Name = readNextLine("Enter full name for player: ")
     var category = ""
     do {
         category = readNextLine("Enter category name for player ($categories): ")
-    } while( !CategoryUtility.isValidCategory(category))
+    } while (!CategoryUtility.isValidCategory(category))
     var DOB = getDateInput("Enter DOB: ")
     var dateAsString = DOB.toString()
     if (DOB == LocalDate.now()) run {
@@ -123,17 +125,17 @@ fun load() {
 }
 
 fun updatePlayer() {
-    //logger.info { "updateNotes() function invoked" }
+    // logger.info { "updateNotes() function invoked" }
     listPlayers()
     if (api.numberOfPlayers() > 0) {
-        //only ask the user to choose the note if notes exist
+        // only ask the user to choose the note if notes exist
         val indexToUpdate = readNextInt("Enter a Index number:")
         if (api.isValidIndex(indexToUpdate)) {
             val Name = readNextLine("Enter full name for player: ")
             var category = ""
             do {
                 category = readNextLine("Enter category name for player ($categories): ")
-            } while( !CategoryUtility.isValidCategory(category))
+            } while (!CategoryUtility.isValidCategory(category))
             var DOB = getDateInput("Enter DOB: ")
             var dateAsString = DOB.toString()
             if (DOB == LocalDate.now()) run {
@@ -144,7 +146,7 @@ fun updatePlayer() {
             do {
                 ageGroup = readNextInt("Enter age group: ")
             } while (ageGroup !in 6..39)
-            if (api.updateNote(indexToUpdate, Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))){
+            if (api.updateNote(indexToUpdate, Player(Name = Name, Category = category, DOB = dateAsString, ageGroup = ageGroup))) {
                 println("Update Successful")
             } else {
                 println("Update Failed")
@@ -158,10 +160,10 @@ fun updatePlayer() {
 fun deletePlayer() {
     listPlayers()
     if (api.numberOfPlayers() > 0) {
-        //only ask the user to choose the note to delete if notes exist
+        // only ask the user to choose the note to delete if notes exist
         val indexToDelete = readNextInt("Enter the index of the note to delete: ")
-        //pass the index of the note to NoteAPI for deleting and check for success.
-        val noteToDelete = api.deleteNote(indexToDelete)
+        // pass the index of the note to NoteAPI for deleting and check for success.
+        val noteToDelete = api.deletePlayer(indexToDelete)
         if (noteToDelete != null) {
             println("Delete Successful! Deleted note: ${noteToDelete.playerID}")
         } else {

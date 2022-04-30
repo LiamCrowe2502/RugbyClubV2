@@ -1,10 +1,9 @@
 package utils
 
-import scanner
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.lang.NumberFormatException
 import java.util.Scanner
-
 
 /**
  * This class provides methods for the robust handling of I/O using Scanner.
@@ -36,7 +35,6 @@ object Scanner {
                 System.err.println("\tEnter a number please.")
             }
         } while (true)
-
     }
 
     /**
@@ -82,7 +80,6 @@ object Scanner {
     }
 
     private const val DATE_FORMAT = "yyyy-MM-dd"
-
 
     /**
      * Read an a date from a user.

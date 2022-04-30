@@ -2,12 +2,18 @@ package controllers
 
 import controller.API
 import model.Player
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import persistence.JSONSerializer
+import persistence.XMLSerializer
 import java.io.File
+import java.util.Locale
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.test.assertNull
 
 class APITest {
 
@@ -15,19 +21,19 @@ class APITest {
     private var summerHoliday: Player? = null
     private var codeApp: Player? = null
     private var testApp: Player? = null
-    private var swim:  Player? = null
+    private var swim: Player? = null
     private var populatedNotes: API? = API()
     private var emptyNotes: API? = API()
 
     @BeforeEach
-    fun setup(){
-        learnKotlin = Player("Learning Kotlin","Forwrds", 20, "2002-01-25")
-        summerHoliday = Player("Summer Holiday to France", "Forwrds", 20, "2002-01-25")
-        codeApp =  Player("Code App", "Forwrds", 20, "2002-01-25")
-        testApp =  Player("Test App", "Forwrds", 20, "2002-01-25")
+    fun setup() {
+        learnKotlin = Player("Learning Kotlin", "Forwrds", 20, "2018-12-12")
+        summerHoliday = Player("Summer Holiday to France", "Forwrds", 20, "2018-12-12")
+        codeApp = Player("Code App", "Forwrds", 20, "2002-01-25")
+        testApp = Player("Test App", "Forwrds", 20, "2002-01-25")
         swim = Player("Swim - Pool", "Forwrds", 20, "2002-01-25")
 
-        //adding 5 Note to the notes api
+        // adding 5 Note to the notes api
         populatedNotes!!.add(learnKotlin!!)
         populatedNotes!!.add(summerHoliday!!)
         populatedNotes!!.add(codeApp!!)
@@ -36,7 +42,7 @@ class APITest {
     }
 
     @AfterEach
-    fun tearDown(){
+    fun tearDown() {
         learnKotlin = null
         summerHoliday = null
         codeApp = null
@@ -47,21 +53,21 @@ class APITest {
     }
 
     @Test
-    fun `adding a Note to a populated list adds to ArrayList`(){
-        val newNote = Player("Study Lambdas","Forwrds", 20, "2002-01-25")
+    fun `adding a Note to a populated list adds to ArrayList`() {
+        val newNote = Player("Study Lambdas", "Forwrds", 20, "2002-01-25")
         assertEquals(5, populatedNotes!!.numberOfPlayers())
         assertTrue(populatedNotes!!.add(newNote))
         assertEquals(6, populatedNotes!!.numberOfPlayers())
-        assertEquals(newNote, populatedNotes!!.findNote(populatedNotes!!.numberOfPlayers() - 1))
+        assertEquals(newNote, populatedNotes!!.findPlayer(populatedNotes!!.numberOfPlayers() - 1))
     }
 
     @Test
-    fun `adding a Note to an empty list adds to ArrayList`(){
+    fun `adding a Note to an empty list adds to ArrayList`() {
         val newNote = Player("Study Lambdas", "Forwrds", 20, "2002-01-25")
         assertEquals(0, emptyNotes!!.numberOfPlayers())
         assertTrue(emptyNotes!!.add(newNote))
         assertEquals(1, emptyNotes!!.numberOfPlayers())
-        assertEquals(newNote, emptyNotes!!.findNote(emptyNotes!!.numberOfPlayers() - 1))
+        assertEquals(newNote, emptyNotes!!.findPlayer(emptyNotes!!.numberOfPlayers() - 1))
     }
 
     @Test

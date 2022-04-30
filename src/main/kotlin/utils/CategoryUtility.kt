@@ -8,7 +8,7 @@ object CategoryUtility {
     val categories = setOf("Forwards", "Backs") // add more categories in here.
 
     @JvmStatic
-    fun isValidCategory(categoryToCheck: String?): Boolean   {
+    fun isValidCategory(categoryToCheck: String?): Boolean {
         for (category in categories) {
             if (category.equals(categoryToCheck, ignoreCase = true)) {
                 return true
